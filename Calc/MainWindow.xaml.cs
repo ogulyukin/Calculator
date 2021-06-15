@@ -32,15 +32,13 @@ namespace Calc
         private void button_digit_Click(object sender, RoutedEventArgs e)
         {
             calc.AddNumber(Convert.ToInt32(((Button)e.OriginalSource).Content.ToString()));
-            display.Text = calc.GetView();
-            summary.Text = calc.Getsummary();
+            invalidateView();
         }
 
         private void button_operation_Click(object sender, RoutedEventArgs e)
         {
             calc.doOperation(((Button)e.OriginalSource).Content.ToString());
-            display.Text = calc.GetView();
-            summary.Text = calc.Getsummary();
+            invalidateView();
         }
         private void button_res_Click(object sender, RoutedEventArgs e)
         {
@@ -64,22 +62,25 @@ namespace Calc
         private void button_dot_Click(object sender, RoutedEventArgs e)
         {
             calc.setDot();
-            display.Text = calc.GetView();
-            summary.Text = calc.Getsummary();
+            invalidateView();
         }
 
         private void ClearAll_Click(object sender, RoutedEventArgs e)
         {
             calc.ClearAll();
-            display.Text = calc.GetView();
-            summary.Text = calc.Getsummary();
+            invalidateView();
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
             calc.ClearCurrent();
+            invalidateView();
+        }
+        private void invalidateView()
+        {
             display.Text = calc.GetView();
             summary.Text = calc.Getsummary();
+            memory.Text = calc.GetMemory();
         }
     }
 }

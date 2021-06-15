@@ -7,6 +7,7 @@ namespace Calc
     {
         private Number _number01; 
         private Number _number02;
+        private Number _memory;
         private bool _current = true;
         private string _operation = " ? ";
         public Calc1()
@@ -15,6 +16,7 @@ namespace Calc
             _number02 = new Number();
             _current = true;
             _operation = " ? ";
+            _memory = new Number();
         }
         public void ClearCurrent()
         {
@@ -60,7 +62,22 @@ namespace Calc
                 }                   
         }
         public void doOperation(string variant)
-        {            
+        {    
+            switch(variant)
+            {
+                case "MC":
+                    _memory.Clear();
+                    return;
+                case "M+":
+                    _memory.setNum(_memory.getNum() + getCurrentValue());
+                    return;
+                case "M-":
+                    _memory.setNum(_memory.getNum() - getCurrentValue());
+                    return;
+                case "MR":
+                    MemoryRead();
+                    return;
+            }
             if (_current)
             {
                 _current = false;
@@ -111,9 +128,11 @@ namespace Calc
         }
         public string Getsummary()
         {
+           
             if (_number02.getNum() == 0)
                 return Convert.ToString(_number01.getNum());
             return Convert.ToString(_number01.getNum()) + _operation + Convert.ToString(_number02.getNum());
+            
         }
         public bool validateLeght()
         {
@@ -122,6 +141,31 @@ namespace Calc
                 return false;
             }
             return true;
+        }
+        private void MemoryRead()
+        {
+            if (_current)
+            {
+                _number01.setNum(_memory.getNum());
+                _number01.lenght = _memory.getNum().ToString().Length;
+                return;
+            }
+            _number02.setNum(_memory.getNum());
+            _number02.lenght = _memory.getNum().ToString().Length;
+        }
+        private decimal getCurrentValue()
+        {
+            if (_current)
+                return _number01.getNum();
+            return _number02.getNum();
+        }
+        public string GetMemory()
+        {
+            if (_memory.getNum() == 0)
+            {
+                return string.Empty;
+            }
+            return "M: " + _memory.getNum().ToString();
         }
     }
 }

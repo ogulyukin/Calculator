@@ -23,6 +23,8 @@
             <RowDefinition Height="0.1*"/>
             <RowDefinition Height="0.8*"/>
             <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.1*"/>
@@ -35,7 +37,15 @@
             <ColumnDefinition Width="0.8*"/>
             <ColumnDefinition Width="0.1*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock x:Name="summary" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="7" Foreground="#FFF9F7F7" TextAlignment="Right">
+        <TextBlock x:Name="summary" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="7" Foreground="#FFF9F7F7" TextAlignment="Right">
+            <TextBlock.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFB68F8F" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBlock.Background>
+        </TextBlock>
+        <TextBlock x:Name="memory" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Foreground="#FFF9F7F7">
             <TextBlock.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
@@ -52,24 +62,28 @@
                 </LinearGradientBrush>
             </TextBlock.Background>
         </TextBlock>
-        <Button x:Name="button_1" Content="1" Grid.Row="11" Grid.Column="1" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
-        <Button x:Name="button_2" Content="2" Grid.Row="11" Grid.Column="3" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
-        <Button x:Name="button_3" Content="3" Grid.Row="11" Grid.Column="5" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
-        <Button x:Name="button_4" Content="4" Grid.Row="9" Grid.Column="1" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
-        <Button x:Name="button_5" Content="5" Grid.Row="9" Grid.Column="3" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
-        <Button x:Name="button_6" Content="6" Grid.Row="9" Grid.Column="5" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
-        <Button x:Name="button_7" Content="7" Grid.Row="7" Grid.Column="1" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
-        <Button x:Name="button_8" Content="8" Grid.Row="7" Grid.Column="3" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
-        <Button x:Name="button_9" Content="9" Grid.Row="7" Grid.Column="5" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
-        <Button x:Name="button_0" Content="0" Grid.Row="13" Grid.Column="3" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
-        <Button x:Name="button_substr" Content=" - " Grid.Row="7" Grid.Column="7" FontSize="36" Background="DarkSlateBlue" Click="button_operation_Click"/>
-        <Button x:Name="button_add" Content=" + " Grid.Row="9" Grid.Column="7" FontSize="36" Background="DarkSlateBlue" Click="button_operation_Click"/>
-        <Button x:Name="button_mult" Content=" * " Grid.Row="5" Grid.Column="7" FontSize="36" Background="DarkSlateBlue" Click="button_operation_Click"/>
-        <Button x:Name="button_div" Content=" / " Grid.Row="5" Grid.Column="5" FontSize="36" Background="DarkSlateBlue" Click="button_operation_Click"/>
-        <Button x:Name="button_res" Content=" = " Grid.Row="11" Grid.Column="7" Grid.RowSpan="3" FontSize="36" Background="DarkSlateBlue" Click="button_res_Click"/>
-        <Button x:Name="button_dot" Content="." Grid.Row="13" Grid.Column="5" FontSize="36" Background="DarkSlateBlue" Click="button_dot_Click"/>
-        <Button x:Name="ClearAll" Content="C" Grid.Row="5" Grid.Column="1" FontSize="36" Background="DarkSlateBlue" Click="ClearAll_Click"/>
-        <Button x:Name="Clear" Content="CE" Grid.Row="5" Grid.Column="3" FontSize="36" Background="DarkSlateBlue" Click="Clear_Click"/>
-        <Button x:Name="button_persent" Content=" % " Grid.Row="13" Grid.Column="1" FontSize="36" Background="DarkSlateBlue" Click="button_operation_Click"/>
+        <Button x:Name="button_mc" Content="MC" Grid.Row="5" Grid.Column="1" FontSize="36" Background="DarkSlateBlue" Click="button_operation_Click"/>
+        <Button x:Name="button_mp" Content="M+" Grid.Row="5" Grid.Column="3" FontSize="36" Background="DarkSlateBlue" Click="button_operation_Click"/>
+        <Button x:Name="button_mm" Content="M-" Grid.Row="5" Grid.Column="5" FontSize="36" Background="DarkSlateBlue" Click="button_operation_Click"/>
+        <Button x:Name="button_mr" Content="MR" Grid.Row="5" Grid.Column="7" FontSize="36" Background="DarkSlateBlue" Click="button_operation_Click"/>
+        <Button x:Name="button_1" Content="1" Grid.Row="13" Grid.Column="1" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
+        <Button x:Name="button_2" Content="2" Grid.Row="13" Grid.Column="3" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
+        <Button x:Name="button_3" Content="3" Grid.Row="13" Grid.Column="5" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
+        <Button x:Name="button_4" Content="4" Grid.Row="11" Grid.Column="1" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
+        <Button x:Name="button_5" Content="5" Grid.Row="11" Grid.Column="3" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
+        <Button x:Name="button_6" Content="6" Grid.Row="11" Grid.Column="5" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
+        <Button x:Name="button_7" Content="7" Grid.Row="9" Grid.Column="1" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
+        <Button x:Name="button_8" Content="8" Grid.Row="9" Grid.Column="3" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
+        <Button x:Name="button_9" Content="9" Grid.Row="9" Grid.Column="5" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
+        <Button x:Name="button_0" Content="0" Grid.Row="15" Grid.Column="3" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
+        <Button x:Name="button_substr" Content=" - " Grid.Row="9" Grid.Column="7" FontSize="36" Background="DarkSlateBlue" Click="button_operation_Click"/>
+        <Button x:Name="button_add" Content=" + " Grid.Row="11" Grid.Column="7" FontSize="36" Background="DarkSlateBlue" Click="button_operation_Click"/>
+        <Button x:Name="button_mult" Content=" * " Grid.Row="7" Grid.Column="7" FontSize="36" Background="DarkSlateBlue" Click="button_operation_Click"/>
+        <Button x:Name="button_div" Content=" / " Grid.Row="7" Grid.Column="5" FontSize="36" Background="DarkSlateBlue" Click="button_operation_Click"/>
+        <Button x:Name="button_res" Content=" = " Grid.Row="13" Grid.Column="7" Grid.RowSpan="3" FontSize="36" Background="DarkSlateBlue" Click="button_res_Click"/>
+        <Button x:Name="button_dot" Content="." Grid.Row="15" Grid.Column="5" FontSize="36" Background="DarkSlateBlue" Click="button_dot_Click"/>
+        <Button x:Name="ClearAll" Content="C" Grid.Row="7" Grid.Column="1" FontSize="36" Background="DarkSlateBlue" Click="ClearAll_Click"/>
+        <Button x:Name="Clear" Content="CE" Grid.Row="7" Grid.Column="3" FontSize="36" Background="DarkSlateBlue" Click="Clear_Click"/>
+        <Button x:Name="button_persent" Content=" % " Grid.Row="15" Grid.Column="1" FontSize="36" Background="DarkSlateBlue" Click="button_operation_Click"/>
     </Grid>
 </Window>
