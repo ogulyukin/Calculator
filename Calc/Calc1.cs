@@ -1,133 +1,127 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Calc
 {
     class Calc1
     {
-        private Number number01; 
-        private Number number02;
-        private bool current = true;
-        private int operation = -1;
+        private Number _number01; 
+        private Number _number02;
+        private bool _current = true;
+        private string _operation = " ? ";
         public Calc1()
         {
-            number01 = new Number();
-            number02 = new Number();
-            current = true;
-            operation = -1;
+            _number01 = new Number();
+            _number02 = new Number();
+            _current = true;
+            _operation = " ? ";
         }
         public void ClearCurrent()
         {
-            if (current)
+            if (_current)
             {
-                number01.Clear();
+                _number01.Clear();
             }
             else
             {
-                number02.Clear();
+                _number02.Clear();
             }
         }
         public void ClearAll()
         {
-            number01.Clear();
-            number02.Clear();
-            current = true;
+            _number01.Clear();
+            _number02.Clear();
+            _current = true;
+            _operation = " ? ";
         }
         public void AddNumber(int number)
         {
-            if (current && number01.lenght > 8)
+            if (_current && _number01.lenght > 8)
                 return;
-            if (!current && number02.lenght > 8)
+            if (!_current && _number02.lenght > 8)
                 return;
-            if (current)
+            if (_current)
             {
-                number01.AddNumber(number);
+                _number01.AddNumber(number);
             }
             else
             {
-                number02.AddNumber(number);
+                _number02.AddNumber(number);
             }
         }
         public void setDot()
         {
-                if (current)
+                if (_current)
                 {
-                    number01.setDot();
+                    _number01.setDot();
                 }else
                 {
-                    number02.setDot();
+                    _number02.setDot();
                 }                   
         }
-        public void doOperation(int variant)
+        public void doOperation(string variant)
         {            
-            if (current)
+            if (_current)
             {
-                current = false;
-                operation = variant;
+                _current = false;
+                _operation = variant;
                 return;
             }
-            operation = variant;
+            _operation = variant;
         }
         public void doResult()
         {
-            switch(operation)
+            switch(_operation)
             {
-                case 1:
-                    number01.setNum(number01.getNum() - number02.getNum());
+                case " - ":
+                    _number01.setNum(_number01.getNum() - _number02.getNum());
                     break;
-                case 2:
-                    number01.setNum(number01.getNum() + number02.getNum());
+                case " + ":
+                    _number01.setNum(_number01.getNum() + _number02.getNum());
                         break;
-                case 3:
-                    number01.setNum(number01.getNum() * number02.getNum());
+                case " * ":
+                    _number01.setNum(_number01.getNum() * _number02.getNum());
                     break;
-                case 4:
-                    number01.setNum(number01.getNum() / number02.getNum());
+                case " / ":
+                    _number01.setNum(_number01.getNum() / _number02.getNum());
                     break;
+                case " % ":
+                    _number01.setNum(_number01.getNum() / 100 * _number02.getNum());
+                    break;
+                case " ? ":
+                    return;
             }
-            number02.Clear();
-            current = true;
+            _number02.Clear();
+            _current = true;
+            _operation = " ? ";
+            _number01.restrictEdit();
         }
         public bool zeroCheck()
         {
-            if (number02.getNum() == 0 && operation == 4)
+            if (_number02.getNum() == 0 && _operation == " / ")
                 return true;
             return false;
         }
         
         public string GetView()
         {
-            if (current)
-                return Convert.ToString(number01.getNum());
-            return Convert.ToString(number02.getNum());
+            if (_current)
+                return Convert.ToString(_number01.getNum());
+            return Convert.ToString(_number02.getNum());
         }
         public string Getsummary()
         {
-            if (number02.getNum() == 0)
-                return Convert.ToString(number01.getNum());
-            return Convert.ToString(number01.getNum()) + GetOperation() + Convert.ToString(number02.getNum());
+            if (_number02.getNum() == 0)
+                return Convert.ToString(_number01.getNum());
+            return Convert.ToString(_number01.getNum()) + _operation + Convert.ToString(_number02.getNum());
         }
-        private string GetOperation()
+        public bool validateLeght()
         {
-            switch(operation)
+            if (_number01.getNum().ToString().Length > 9)
             {
-                case 1:
-                    return " - ";
-                    break;
-                case 2:
-                    return " + ";
-                    break;
-                case 3:
-                    return " * ";
-                    break;
-                case 4:
-                    return " / ";
-                    break;
+                return false;
             }
-            return " ? ";
+            return true;
         }
     }
 }

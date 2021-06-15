@@ -6,34 +6,36 @@
         xmlns:local="clr-namespace:Calc"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="450">
-    <Grid>
-        <TextBlock x:Name="display" HorizontalAlignment="Left" Margin="60,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="54" Width="316" FontSize="48" FontWeight="Bold" FontFamily="Arial Black" Foreground="#FFFDFDFD" Text="0">
-            <TextBlock.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black"/>
-                    <GradientStop Color="#FF6C2525" Offset="1"/>
-                </LinearGradientBrush>
-            </TextBlock.Background>
-        </TextBlock>
-        <Button x:Name="button_1" Content="1" HorizontalAlignment="Left" Margin="60,129,0,0" VerticalAlignment="Top" Height="55" Width="55" FontSize="36" Click="button_1_Click"/>
-        <Button x:Name="button_2" Content="2" HorizontalAlignment="Left" Margin="139,129,0,0" VerticalAlignment="Top" Height="55" Width="55" FontSize="36" Click="button_2_Click"/>
-        <Button x:Name="button_3" Content="3" HorizontalAlignment="Left" Margin="225,129,0,0" VerticalAlignment="Top" Height="55" Width="55" FontSize="36" Click="button_3_Click"/>
-        <Button x:Name="button_4" Content="4" HorizontalAlignment="Left" Margin="60,217,0,0" VerticalAlignment="Top" Height="55" Width="55" FontSize="36" Click="button_4_Click"/>
-        <Button x:Name="button_5" Content="5" HorizontalAlignment="Left" Margin="139,217,0,0" VerticalAlignment="Top" Height="55" Width="55" RenderTransformOrigin="-0.176,-0.614" FontSize="36" Click="button_5_Click"/>
-        <Button x:Name="button_6" Content="6" HorizontalAlignment="Left" Margin="225,217,0,0" VerticalAlignment="Top" Height="55" Width="55" FontSize="36" Click="button_6_Click"/>
-        <Button x:Name="button_7" Content="7" HorizontalAlignment="Left" Margin="60,295,0,0" VerticalAlignment="Top" Height="55" Width="55" FontSize="36" Click="button_7_Click"/>
-        <Button x:Name="button_8" Content="8" HorizontalAlignment="Left" Margin="139,295,0,0" VerticalAlignment="Top" Height="55" Width="55" FontSize="36" Click="button_8_Click"/>
-        <Button x:Name="button_9" Content="9" HorizontalAlignment="Left" Margin="225,295,0,0" VerticalAlignment="Top" Height="55" Width="55" FontSize="36" Click="button_9_Click"/>
-        <Button x:Name="button_substr" Content="-" HorizontalAlignment="Left" Margin="139,453,0,0" VerticalAlignment="Top" Width="55" Height="55" FontSize="36" FontWeight="Normal" Click="button_substr_Click"/>
-        <Button x:Name="button_add" Content="+" HorizontalAlignment="Left" Margin="60,453,0,0" VerticalAlignment="Top" Height="55" Width="55" FontSize="36" Click="button_add_Click"/>
-        <Button x:Name="button_mult" Content="*" HorizontalAlignment="Left" Margin="60,380,0,0" VerticalAlignment="Top" Height="55" Width="55" FontSize="36" Click="button_mult_Click"/>
-        <Button x:Name="button_div" Content="/" HorizontalAlignment="Left" Margin="139,380,0,0" VerticalAlignment="Top" Height="55" Width="55" FontSize="36" Click="button_div_Click"/>
-        <Button x:Name="button_res" Content="=" HorizontalAlignment="Left" Margin="314,295,0,0" VerticalAlignment="Top" Height="213" Width="55" FontSize="36" Click="button_res_Click"/>
-        <Button x:Name="button_dot" Content="." HorizontalAlignment="Left" Margin="225,453,0,0" VerticalAlignment="Top" Height="55" Width="55" FontSize="36" Click="button_dot_Click"/>
-        <Button x:Name="ClearAll" Content="C" HorizontalAlignment="Left" Margin="314,129,0,0" VerticalAlignment="Top" Height="55" Width="55" FontSize="36" Click="ClearAll_Click"/>
-        <Button x:Name="Clear" Content="CE" HorizontalAlignment="Left" Margin="314,217,0,0" VerticalAlignment="Top" Height="55" Width="55" FontSize="36" Click="Clear_Click"/>
-        <Button x:Name="button_0" Content="0" HorizontalAlignment="Left" Margin="225,380,0,0" VerticalAlignment="Top" Height="55" Width="55" FontSize="36" Click="button_0_Click"/>
-        <TextBlock x:Name="summary" HorizontalAlignment="Left" Margin="60,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="316" Height="18" Foreground="#FFF9F7F7">
+    <Grid Background="DarkBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="0.8*"/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="0.8*"/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="0.8*"/>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="0.8*"/>
+            <ColumnDefinition Width="0.1*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="summary" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="7" Foreground="#FFF9F7F7" TextAlignment="Right">
             <TextBlock.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
@@ -41,6 +43,33 @@
                 </LinearGradientBrush>
             </TextBlock.Background>
         </TextBlock>
-
+        <TextBlock x:Name="display" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="7" FontSize="68" 
+                   FontWeight="Bold" FontFamily="Arial Black" Foreground="#FFFDFDFD" Text="0" TextAlignment="Right">
+            <TextBlock.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FF6C2525" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBlock.Background>
+        </TextBlock>
+        <Button x:Name="button_1" Content="1" Grid.Row="11" Grid.Column="1" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
+        <Button x:Name="button_2" Content="2" Grid.Row="11" Grid.Column="3" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
+        <Button x:Name="button_3" Content="3" Grid.Row="11" Grid.Column="5" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
+        <Button x:Name="button_4" Content="4" Grid.Row="9" Grid.Column="1" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
+        <Button x:Name="button_5" Content="5" Grid.Row="9" Grid.Column="3" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
+        <Button x:Name="button_6" Content="6" Grid.Row="9" Grid.Column="5" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
+        <Button x:Name="button_7" Content="7" Grid.Row="7" Grid.Column="1" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
+        <Button x:Name="button_8" Content="8" Grid.Row="7" Grid.Column="3" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
+        <Button x:Name="button_9" Content="9" Grid.Row="7" Grid.Column="5" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
+        <Button x:Name="button_0" Content="0" Grid.Row="13" Grid.Column="3" FontSize="36" Background="DarkSlateBlue" Click="button_digit_Click"/>
+        <Button x:Name="button_substr" Content=" - " Grid.Row="7" Grid.Column="7" FontSize="36" Background="DarkSlateBlue" Click="button_operation_Click"/>
+        <Button x:Name="button_add" Content=" + " Grid.Row="9" Grid.Column="7" FontSize="36" Background="DarkSlateBlue" Click="button_operation_Click"/>
+        <Button x:Name="button_mult" Content=" * " Grid.Row="5" Grid.Column="7" FontSize="36" Background="DarkSlateBlue" Click="button_operation_Click"/>
+        <Button x:Name="button_div" Content=" / " Grid.Row="5" Grid.Column="5" FontSize="36" Background="DarkSlateBlue" Click="button_operation_Click"/>
+        <Button x:Name="button_res" Content=" = " Grid.Row="11" Grid.Column="7" Grid.RowSpan="3" FontSize="36" Background="DarkSlateBlue" Click="button_res_Click"/>
+        <Button x:Name="button_dot" Content="." Grid.Row="13" Grid.Column="5" FontSize="36" Background="DarkSlateBlue" Click="button_dot_Click"/>
+        <Button x:Name="ClearAll" Content="C" Grid.Row="5" Grid.Column="1" FontSize="36" Background="DarkSlateBlue" Click="ClearAll_Click"/>
+        <Button x:Name="Clear" Content="CE" Grid.Row="5" Grid.Column="3" FontSize="36" Background="DarkSlateBlue" Click="Clear_Click"/>
+        <Button x:Name="button_persent" Content=" % " Grid.Row="13" Grid.Column="1" FontSize="36" Background="DarkSlateBlue" Click="button_operation_Click"/>
     </Grid>
 </Window>

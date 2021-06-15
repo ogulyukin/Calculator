@@ -29,109 +29,36 @@ namespace Calc
         }
         
 
-        private void button_1_Click(object sender, RoutedEventArgs e)
+        private void button_digit_Click(object sender, RoutedEventArgs e)
         {
-            calc.AddNumber(1);
+            calc.AddNumber(Convert.ToInt32(((Button)e.OriginalSource).Content.ToString()));
             display.Text = calc.GetView();
             summary.Text = calc.Getsummary();
         }
 
-        private void button_2_Click(object sender, RoutedEventArgs e)
+        private void button_operation_Click(object sender, RoutedEventArgs e)
         {
-            calc.AddNumber(2);
+            calc.doOperation(((Button)e.OriginalSource).Content.ToString());
             display.Text = calc.GetView();
             summary.Text = calc.Getsummary();
         }
-
-        private void button_3_Click(object sender, RoutedEventArgs e)
-        {
-            calc.AddNumber(3);
-            display.Text = calc.GetView();
-            summary.Text = calc.Getsummary();
-        }
-
-        private void button_4_Click(object sender, RoutedEventArgs e)
-        {
-            calc.AddNumber(4);
-            display.Text = calc.GetView();
-            summary.Text = calc.Getsummary();
-        }
-
-        private void button_6_Click(object sender, RoutedEventArgs e)
-        {
-            calc.AddNumber(6);
-            display.Text = calc.GetView();
-            summary.Text = calc.Getsummary();
-        }
-
-        private void button_5_Click(object sender, RoutedEventArgs e)
-        {
-            calc.AddNumber(5);
-            display.Text = calc.GetView();
-            summary.Text = calc.Getsummary();
-        }
-
-        private void button_7_Click(object sender, RoutedEventArgs e)
-        {
-            calc.AddNumber(7);
-            display.Text = calc.GetView();
-            summary.Text = calc.Getsummary();
-        }
-
-        private void button_8_Click(object sender, RoutedEventArgs e)
-        {
-            calc.AddNumber(8);
-            display.Text = calc.GetView();
-            summary.Text = calc.Getsummary();
-        }
-
-        private void button_9_Click(object sender, RoutedEventArgs e)
-        {
-            calc.AddNumber(9);
-            display.Text = calc.GetView();
-            summary.Text = calc.Getsummary();
-        }
-
-        private void button_substr_Click(object sender, RoutedEventArgs e)
-        {
-            calc.doOperation(1);
-            display.Text = calc.GetView();
-            summary.Text = calc.Getsummary();
-        }
-
-        private void button_add_Click(object sender, RoutedEventArgs e)
-        {
-            calc.doOperation(2);
-            display.Text = calc.GetView();
-            summary.Text = calc.Getsummary();
-        }
-
-        private void button_mult_Click(object sender, RoutedEventArgs e)
-        {
-            calc.doOperation(3);
-            display.Text = calc.GetView();
-            summary.Text = calc.Getsummary();
-        }
-
-        private void button_div_Click(object sender, RoutedEventArgs e)
-        {
-            calc.doOperation(4);
-            display.Text = calc.GetView();
-            summary.Text = calc.Getsummary();
-        }
-
         private void button_res_Click(object sender, RoutedEventArgs e)
         {
             if(calc.zeroCheck())
             {
                 calc.ClearAll();
                 display.Text = "ERROR";
-
-            }else
-            {
-                calc.doResult();
-                display.Text = calc.GetView();
+                return;
             }
+            calc.doResult();
+            if(!calc.validateLeght())
+            {
+                display.Text = "ERROR";
+                calc.ClearAll();
+                return;
+            }
+            display.Text = calc.GetView();
+            
         }
 
         private void button_dot_Click(object sender, RoutedEventArgs e)
@@ -151,13 +78,6 @@ namespace Calc
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
             calc.ClearCurrent();
-            display.Text = calc.GetView();
-            summary.Text = calc.Getsummary();
-        }
-
-        private void button_0_Click(object sender, RoutedEventArgs e)
-        {
-            calc.AddNumber(0);
             display.Text = calc.GetView();
             summary.Text = calc.Getsummary();
         }

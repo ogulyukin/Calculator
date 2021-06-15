@@ -10,7 +10,8 @@ namespace Calc
     {
         private decimal _num;
         private int _digit;
-        private bool _dot = false;
+        private bool _dot;
+        private bool _editable;
         public int lenght { get; set; }
 
         public void setDot()
@@ -26,6 +27,7 @@ namespace Calc
             _digit = 10;
             _dot = false;
             lenght = 0;
+            _editable = true;
         }
 
         public Number()
@@ -40,7 +42,13 @@ namespace Calc
 
         public void AddNumber(int number) 
         {
-            if (number == 0 && _dot == false)
+            if (!_editable)
+            {
+                Clear();
+                setNum(number);
+                return;
+            }
+            if (number == 0 && _dot == false && _num == 0)
                 return;
             if(!_dot)
             {
@@ -66,6 +74,11 @@ namespace Calc
         public void setNum(decimal number)
         {
             _num = number;
+            //lenght = number.ToString().Length;
+        }
+        public void restrictEdit()
+        {
+            _editable = false;
         }
     }
 }
